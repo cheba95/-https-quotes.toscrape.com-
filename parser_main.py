@@ -38,7 +38,6 @@ def parse_page(page):
             if not tag_text in tags_dictionary: # проверяем, есть ли тэг в словаре тэгов
                 tags_dictionary[tag_text] = url + rt['href'] # если тэга нет, вносим тэг в словарь как ключ, url-ссылку по нему 
                 #- как значение
-        
         quotes.append(
         {
             'text': quote_text,
@@ -58,11 +57,9 @@ response.raise_for_status() # проверяем, понял сервер зап
 # Если не вызвать raise_for_status(), программа посчитает, что всё в порядке, и отправит запрос на страницу, которой нет.
 
 page = BeautifulSoup(response.text, 'html.parser') # обрабатываем ответ через BeautifulSoup для дальнейшей работы
-
 parse_page(page) # применяем ранее созданную функцию для поиска и сохранения информации к главной странице
 
 next_page_check = page.find(class_='next') # проверяем, если ли на веб-странице переход к следующей веб-странице
-
 while next_page_check is not None: #запускаем цикл обработки всех страниц сайта с цитатами, пока есть кнопка перехода к следующей
     next_page_url = url + next_page_check.find('a', href=True)['href'] #создаем адрес следующей страницы
     next_page = requests.get(next_page_url,headers=headers) #делаем запрос к новой странице и сохраняем ответ 
