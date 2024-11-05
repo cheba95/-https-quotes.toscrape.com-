@@ -19,8 +19,8 @@ def parse_page(page):
             birth_place = bio_page.find(class_='author-born-location').text 
             description = bio_page.find(class_='author-description').text.strip() 
             authors_info[author] = {
-                'date_of_birth': birth_date,  
-                'place_of_birth': birth_place[3:],
+                'birth_date': birth_date,  
+                'birth_place': birth_place[3:],
                 'description': description
                 } 
             
