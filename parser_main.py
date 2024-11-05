@@ -25,8 +25,8 @@ def parse_page(page):
             description = bio_page.find(class_='author-description').text.strip() #находим и сохраняем сведения об авторе
             #при этомм срезаем символы перевода строки - улучшаем читаемость и не мешаем машинной обработке
             authors_info[author] = {
-                'date_of_birth': birth_date,  
-                'place_of_birth': birth_place[3:],
+                'birth_date': birth_date,  
+                'birth_place': birth_place[3:],
                 'description': description
                 } #создаем словарь с датой, местом рождения и сведениями об авторе и записываем его как значение в словарь авторов
             #и сведений о них. Место рождения берем срезом с 3 элемента - т.к. первые 3 элемента это "in ", не несущие смысла
